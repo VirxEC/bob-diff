@@ -21,16 +21,11 @@ jobs:
       with:
         platform: x64
 
-    - name: Install Rust nightly
-      run: |
-        rustup toolchain install nightly
-        rustup target add x86_64-pc-windows-gnu
-        rustup component add rust-src --toolchain nightly
+    - name: Get x86_64-pc-windows-gnu
+      run: rustup target add x86_64-pc-windows-gnu
 
     - name: Build
-      run: |
-        set RUSTFLAGS="-Zlocation-detail=none"
-        cargo +nightly build -Z build-std=std,panic_abort --target x86_64-pc-windows-gnu --release
+      run: cargo --target x86_64-pc-windows-gnu --release
         
     - run: |
         mkdir -p output

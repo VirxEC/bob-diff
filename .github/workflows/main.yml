@@ -10,7 +10,7 @@ env:
 
 jobs:
   windows:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
@@ -19,18 +19,17 @@ jobs:
     - name: Install Rust nightly
       run: |
         rustup toolchain install nightly
+        rustup target add x86_64-pc-windows-gnu
         rustup component add rust-src --toolchain nightly
 
     - name: Build
-      run: |
-        set RUSTFLAGS="-Zlocation-detail=none"
-        cargo +nightly build -Z build-std=std,panic_abort --target x86_64-pc-windows-msvc --release
+      run: RUSTFLAGS="-Zlocation-detail=none" cargo +nightly build -Z build-std=std,panic_abort --target x86_64-pc-windows-gnu --release
 
     - uses: actions/upload-artifact@v4
       with:
         name: windows
         path: |
-          target/*/release/bob_diff.lib
+          target/*/release/libbob_diff_win.a
 
   linux:
     runs-on: ubuntu-latest

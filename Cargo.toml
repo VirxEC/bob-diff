@@ -1,6 +1,6 @@
 [package]
 name = "bob-diff"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 
 [lib]
@@ -9,10 +9,7 @@ crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
 anyhow = "1.0.96"
-ignore = "0.4.23"
-log = "0.4.26"
-qbsdiff = "1.4.2"
-rayon = "1.10.0"
+bob-lib = { git = "https://github.com/swz-git/bob.git" }
 
 [profile.release]
 codegen-units=1

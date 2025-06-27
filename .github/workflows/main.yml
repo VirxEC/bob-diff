@@ -37,7 +37,7 @@ jobs:
         name: windows
         path: |
           output/libbob_diff_win.a
-          output/bob_diff_win.dll
+          output/bob_diff.dll
 
   linux:
     runs-on: ubuntu-latest

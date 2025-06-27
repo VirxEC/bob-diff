@@ -37,12 +37,14 @@ jobs:
     - run: |
         mkdir -p output
         copy target\x86_64-pc-windows-gnu\release\libbob_diff.a output\libbob_diff_win.a
+        copy target\x86_64-pc-windows-gnu\release\libbob_diff.dll output\libbob_diff_win.dll
 
     - uses: actions/upload-artifact@v4
       with:
         name: windows
         path: |
           output/libbob_diff_win.a
+          output/libbob_diff_win.dll
 
   linux:
     runs-on: ubuntu-latest
@@ -63,6 +65,7 @@ jobs:
         name: linux
         path: |
           target/*/release/libbob_diff.a
+          target/*/release/libbob_diff.so
 
   publish:
     runs-on: ubuntu-latest

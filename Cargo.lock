@@ -64,8 +64,8 @@ dependencies = [
 
 [[package]]
 name = "bob-lib"
-version = "0.4.0"
-source = "git+https://github.com/swz-git/bob.git#50276c98d92059d77dab2413d9f4a9433d41d7cb"
+version = "0.4.1"
+source = "git+https://github.com/swz-git/bob.git#93e783a8d69b1dc28cae62f22e7c85f8958d3204"
 dependencies = [
  "anyhow",
  "bidiff",

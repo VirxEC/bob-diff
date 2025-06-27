@@ -1,11 +1,14 @@
 [package]
 name = "bob-diff"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2024"
+
+[lints.clippy]
+all = "warn"
 
 [lib]
 name = "bob_diff"
-crate-type = ["cdylib", "staticlib"]
+crate-type = ["cdylib", "staticlib", "rlib"]
 
 [dependencies]
 anyhow = "1.0.96"

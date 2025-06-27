@@ -30,7 +30,7 @@ jobs:
     - run: |
         mkdir -p output
         copy target\x86_64-pc-windows-gnu\release\libbob_diff.a output\libbob_diff_win.a
-        copy target\x86_64-pc-windows-gnu\release\libbob_diff.dll output\libbob_diff_win.dll
+        copy target\x86_64-pc-windows-gnu\release\bob_diff.dll output\bob_diff.dll
 
     - uses: actions/upload-artifact@v4
       with:

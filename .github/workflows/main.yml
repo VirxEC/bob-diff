@@ -24,20 +24,25 @@ jobs:
     - name: Get x86_64-pc-windows-gnu
       run: rustup target add x86_64-pc-windows-gnu
 
+    - name: Install Rust nightly
+      run: |
+        rustup toolchain install nightly
+        rustup component add rust-src --toolchain nightly
+
     - name: Build
-      run: cargo build --target x86_64-pc-windows-gnu --release
+      run: |
+        set RUSTFLAGS="-Zlocation-detail=none -C linker=x86_64-w64-mingw32-gcc"
+        cargo +nightly build -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort --target x86_64-pc-windows-gnu --release
         
     - run: |
         mkdir -p output
         copy target\x86_64-pc-windows-gnu\release\libbob_diff.a output\libbob_diff_win.a
-        copy target\x86_64-pc-windows-gnu\release\bob_diff.dll output\bob_diff.dll
 
     - uses: actions/upload-artifact@v4
       with:
         name: windows
         path: |
           output/libbob_diff_win.a
-          output/bob_diff.dll
 
   linux:
     runs-on: ubuntu-latest
@@ -58,7 +63,6 @@ jobs:
         name: linux
         path: |
           target/*/release/libbob_diff.a
-          target/*/release/libbob_diff.so
 
   publish:
     runs-on: ubuntu-latest

@@ -1,5 +1,3 @@
-#![warn(clippy::pedantic, clippy::nursery)]
-
 use core::{
     ffi::{CStr, c_char},
     slice,
@@ -87,7 +85,7 @@ pub unsafe extern "C" fn diff_apply(dir: *const c_char, buf: *const c_char, buf_
     let buf = buf_to_slice(buf, len);
 
     if let Err(e) = diff::command_diff_apply(&dir, buf) {
-        eprintln!("Error: {e:?}");
+        eprintln!("Error: {e:#}");
         1
     } else {
         0

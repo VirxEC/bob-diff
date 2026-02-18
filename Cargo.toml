@@ -1,10 +1,12 @@
 [package]
 name = "bob-diff"
-version = "0.3.2"
+version = "0.4.0"
 edition = "2024"
 
 [lints.clippy]
 all = "warn"
+pedantic = "warn"
+nursery = "warn"
 
 [lib]
 name = "bob_diff"
